@@ -12,7 +12,7 @@ describe('auth', function() {
   describe('#login', function() {
     it('should send status 500 when sending no data', function(done) {
       request(app)
-        .post('/auth/login')
+        .post('/login')
         .expect(500)
         .end(function(err) {
           err ? done(err) : done();
@@ -21,7 +21,7 @@ describe('auth', function() {
 
     it('should send status 500 when sending blank values', function(done) {
       request(app)
-        .post('/auth/login')
+        .post('/login')
         .send({email: '', password: ''})
         .expect(500)
         .end(function(err) {
@@ -31,7 +31,7 @@ describe('auth', function() {
 
     it('should throw an error when using an invalid email', function(done) {
       request(app)
-        .post('/auth/login')
+        .post('/login')
         .send({email: 'hello@example.com', password: '12345'})
         .expect(200)
         .end(function(err) {
@@ -72,9 +72,9 @@ describe('auth', function() {
 
     it('should insert a new user into the database', function(done) {
       request(app)
-        .post('/auth/register')
+        .post('/register')
         .send({email: 'newuser@example.com', password: '12345'})
-        .expect(200)
+        .expect(302)
         .end(function(err, res) {
           err && done(err);
 
@@ -85,7 +85,7 @@ describe('auth', function() {
 
     it('should not allow duplicate emails to register', function(done) {
       request(app)
-        .post('/auth/register')
+        .post('/register')
         .send({email: 'newuser@example.com', password: '12345'})
         .expect(200)
         .end(function(err, res) {

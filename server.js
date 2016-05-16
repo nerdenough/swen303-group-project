@@ -4,6 +4,7 @@ var http = require('http');
 var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var logger = require('morgan');
 var mysql = require('mysql');
 
@@ -28,6 +29,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
+app.use(session({
+  secret: 'todo',
+  resave: true,
+  saveUninitialized: false
+}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -39,7 +45,7 @@ app.use(function(req, res, next) {
 
 // Define routes
 app.use('/', index);
-app.use('/auth', auth);
+app.use('/', auth);
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
