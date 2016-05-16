@@ -4,8 +4,10 @@ var router = express.Router();
 
 // Get: /
 router.get('/', function(req, res) {
+  console.log(req.session.user);
   res.render('index', {
-    title: 'SWEN303 Project'
+    title: 'SWEN303 Project',
+    user: req.session.user
   });
 });
 

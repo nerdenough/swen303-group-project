@@ -2,6 +2,39 @@
 var express = require('express');
 var router = express.Router();
 
+// Get: /login
+router.get('/login', function(req, res) {
+  if (req.session.user) {
+    res.redirect('/');
+  }
+
+  res.render('auth/login', {
+    title: 'SWEN303 Project'
+  });
+});
+
+// Get: /register
+router.get('/register', function(req, res) {
+  if (req.session.user) {
+    res.redirect('/');
+  }
+
+  res.render('auth/register', {
+    title: 'SWEN303 Project'
+  });
+});
+
+// GET: /logout
+router.get('/logout', function(req, res) {
+  req.session.destroy(function(err) {
+    if (err) {
+      res.sendStatus(500);
+    }
+
+    res.redirect('/login');
+  });
+});
+
 // Post: /login
 router.post('/login', function(req, res) {
   var email = req.body.email;
@@ -20,9 +53,7 @@ router.post('/login', function(req, res) {
     }
 
     req.session.user = {
-      email: rows[0].email,
-      firstname: rows[0].firstname,
-      lastname: rows[0].lastname
+      email: email
     };
 
     res.redirect('/');
@@ -52,7 +83,11 @@ router.post('/register', function(req, res) {
         return res.sendStatus(500);
       }
 
-      res.redirect('/hi');
+      req.session.user = {
+        email: email
+      };
+
+      res.redirect('/');
     });
   });
 });

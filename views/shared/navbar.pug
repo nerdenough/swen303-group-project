@@ -12,7 +12,11 @@ nav#swen303-navbar.navbar.navbar-default
         li
           a(href='/') Home
       ul.nav.navbar-nav.navbar-right
-        li
-          a(href='/register') Register
-        li
-          a(href='/login') Login
+        unless user
+          li
+            a(href='/register') Register
+          li
+            a(href='/login') Login
+        else
+          li
+            a(href='/logout') Logout

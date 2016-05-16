@@ -1,0 +1,11 @@
+extends ../shared/layout.pug
+
+block content
+  .container
+    form.auth-form(action='/register', method='post')
+      h1 Sign Up
+      input(type='email', name='email', placeholder='Email')
+      input(type='password', name='password', placeholder='Password')
+      button(type='submit') Create Account
+      .alt-link
+        a(href='/login') Already Have an Account?
