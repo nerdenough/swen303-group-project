@@ -1,0 +1,66 @@
+@import 'partials/base';
+
+#swen303-navbar {
+  height: 100px;
+  background: $theme-color;
+  border: none;
+  border-radius: 0;
+
+  .navbar-brand {
+    height: 100%;
+    color: white;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: $bold;
+    line-height: 100px;
+    padding: 0 20px;
+  }
+
+  .navbar-nav a {
+    height: 100px;
+    background: $theme-color;
+    color: white;
+    font-size: 18px;
+    font-weight: $light;
+    line-height: 100px;
+    padding: 0 20px;
+
+    &:hover {
+      background: $highlight-color;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-toggle {
+    margin-top: 50px;
+    transform: translateY(-50%);
+    border: none;
+
+    .icon-bar {
+      background: white!important;
+    }
+
+    &:hover {
+      background: none!important;
+    }
+  }
+
+  .navbar-collapse {
+    border: none;
+    border-top: 1px solid $highlight-color!important;
+  }
+
+  .navbar-right {
+    border-top: 1px solid $highlight-color!important;
+  }
+
+  .navbar-nav a {
+    height: 50px!important;
+    line-height: 50px!important;
+  }
+
+  .navbar-nav {
+    margin: 0 -15px;
+  }
+}

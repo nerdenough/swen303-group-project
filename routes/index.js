@@ -5,7 +5,7 @@ var router = express.Router();
 // Get: /
 router.get('/', function(req, res) {
   res.render('index', {
-    title: 'Hello, world!'
+    title: 'SWEN303 Project'
   });
 });
 
