@@ -12,11 +12,22 @@ nav#swen303-navbar.navbar.navbar-default
         li
           a(href='/') Home
       ul.nav.navbar-nav.navbar-right
+        li
+          a(href='#') Cart
         unless user
           li
             a(href='/register') Sign Up
           li
             a(href='/login') Login
         else
-          li
-            a(href='/logout') Logout
+          li.dropdown
+            a.dropdown-toggle(data-toggle='dropdown' href='#')= user.email
+              span.caret
+
+            ul.dropdown-menu
+              li
+                a(href='#') My Account
+              li
+                a(href='#') My Orders
+              li
+                a(href='/logout') Logout
