@@ -4,10 +4,19 @@ var http = require('http');
 var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var logger = require('morgan');
+var mysql = require('mysql');
 
 // Custom routes
 var index = require('./routes/index');
+var auth = require('./routes/auth');
+
+// Config
+var config = require('./config');
+
+// MySQL setup
+var db = mysql.createConnection(config.mysql);
 
 // Server setup
 var app = express();
@@ -20,11 +29,23 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
+app.use(session({
+  secret: 'todo',
+  resave: true,
+  saveUninitialized: false
+}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Global route
+app.use(function(req, res, next) {
+  req.db = db;
+  next();
+});
+
 // Define routes
 app.use('/', index);
+app.use('/', auth);
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

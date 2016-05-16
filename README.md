@@ -26,3 +26,16 @@ then forwarded to the host machine. This box is based on Ubuntu 14.04 64-bit
 - User: `vagrant`
 - Pass: `vagrant`
 - Database: `vagrant`
+
+## Contributing
+For working on this project, please ensure you follow the
+[Feature Branch Workflow](https://www.atlassian.com/pt/git/workflows#!workflow-feature-branch)
+to ensure consistency throughout the code.
+
+`.eslintrc` has been added to ensure consistency throughout JavaScript files.
+This file is based on the
+[Node Style Guide](https://github.com/felixge/node-style-guide/blob/master/Readme.md)
+and should be used with a valid eslint checker. Main points:
+- Use 2 spaces for indentation
+- Limit JavaScript files to 80 characters per line
+- Use ===, !== instead of ==, !=
