@@ -19,7 +19,7 @@ router.get('/register', function(req, res) {
     res.redirect('/');
   }
 
-  res.render('auth/register', {
+  return res.render('auth/register', {
     title: 'SWEN303 Project'
   });
 });
@@ -28,7 +28,7 @@ router.get('/register', function(req, res) {
 router.get('/logout', function(req, res) {
   req.session.destroy(function(err) {
     if (err) {
-      res.sendStatus(500);
+      return res.sendStatus(500);
     }
 
     res.redirect('/login');
@@ -41,7 +41,10 @@ router.post('/login', function(req, res) {
   var password = req.body.password;
 
   if (!email.length || !password.length) {
-    return res.sendStatus(500);
+    return res.render('auth/login', {
+      title: 'SWEN303 Project',
+      error: 'No email or password specified'
+    });
   }
 
   var sql = 'SELECT password FROM users WHERE email=?';
@@ -49,7 +52,10 @@ router.post('/login', function(req, res) {
     if (err) {
       return res.sendStatus(500);
     } else if (!rows.length || rows[0].password !== password) {
-      return res.json({error: 'Invalid Credentials'});
+      return res.render('auth/login', {
+        title: 'SWEN303 Project',
+        error: 'Invalid email or password'
+      });
     }
 
     req.session.user = {
@@ -69,12 +75,22 @@ router.post('/register', function(req, res) {
     password: password
   };
 
+  if (!email.length || !password.length) {
+    return res.render('auth/register', {
+      title: 'SWEN303 Project',
+      error: 'No email or password specified'
+    });
+  }
+
   var sql = 'SELECT email FROM users WHERE email=?';
   req.db.query(sql, email, function(err, rows) {
     if (err) {
       return res.sendStatus(500);
     } else if (rows.length) {
-      return res.json({error: 'User Exists'});
+      return res.render('auth/register', {
+        title: 'SWEN303 Project',
+        error: 'An account already exists with this email address'
+      });
     }
 
     sql = 'INSERT INTO users SET ?';

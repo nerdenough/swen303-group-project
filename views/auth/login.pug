@@ -6,6 +6,8 @@ block content
       h1 Login
       input(type='email', name='email', placeholder='Email')
       input(type='password', name='password', placeholder='Password')
+      if error
+        .error= error
       button(type='submit') Login
       .alt-link
         a(href='/register') No Account?
