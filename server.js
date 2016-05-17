@@ -11,6 +11,7 @@ var mysql = require('mysql');
 // Custom routes
 var index = require('./routes/index');
 var auth = require('./routes/auth');
+var listItem = require('./routes/listItem');
 
 // Config
 var config = require('./config');
@@ -46,6 +47,7 @@ app.use(function(req, res, next) {
 // Define routes
 app.use('/', index);
 app.use('/', auth);
+app.use('/', listItem);
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

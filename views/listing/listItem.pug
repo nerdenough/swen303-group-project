@@ -1,0 +1,10 @@
+extends ../shared/layout.pug
+
+block content
+  .container
+    form.auth-form(action='/listItem', method='post')
+      input(type='text', name='name', placeholder='Name')
+      input(type='text', name='description', placeholder='Description')
+      input(type='text', name='publisher', placeholder='Publisher')
+      input(type='decimal', name='price', placeholder='Price')
+      button(type='submit') Submit
