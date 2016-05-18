@@ -28,6 +28,7 @@ CREATE TABLE software (
   name VARCHAR(50) NOT NULL,
   description TEXT,
   website VARCHAR(100),
+  category VARCHAR(20),
   PRIMARY KEY (id)
 );
 
