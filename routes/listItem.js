@@ -17,11 +17,12 @@ router.post('/listItem', function(req, res) {
   var publisher = req.body.publisher;
   var price = req.body.price;
   var category = req.body.category;
-  
+
   var post = {
     name: name,
     description: description,
-    price: price
+    price: price,
+    category: category
   };
 
   var sql = 'INSERT INTO software SET ?';
