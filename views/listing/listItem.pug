@@ -5,6 +5,16 @@ block content
     form.auth-form(action='/listItem', method='post')
       input(type='text', name='name', placeholder='Name')
       input(type='text', name='description', placeholder='Description')
+      br
+      br
+      p| Category:
+      select(name='category')
+        option(value='RAM') RAM
+        option(value='CPU') CPU
+        option(value='GPU') GPU
+        option(value='PSU') PSU
+
       input(type='text', name='publisher', placeholder='Publisher')
-      input(type='decimal', name='price', placeholder='Price')
+      input(type='number', step='0.01', name='price', placeholder='Price')
+
       button(type='submit') Submit

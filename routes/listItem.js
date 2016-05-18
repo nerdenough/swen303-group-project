@@ -16,7 +16,8 @@ router.post('/listItem', function(req, res) {
   var description = req.body.description;
   var publisher = req.body.publisher;
   var price = req.body.price;
-
+  var category = req.body.category;
+  
   var post = {
     name: name,
     description: description,
