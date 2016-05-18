@@ -1,9 +1,0 @@
-extends ./shared/layout.pug
-
-block content
-    form.auth-form(action='/additem', method='post')
-      input(type='text', name='name', placeholder='Name')
-      input(type='text', name='description', placeholder='Description')
-      input(type='text', name='publisher', placeholder='Publisher')
-      input(type='price', name='price', placeholder='Price')
-      button(type='submit') Submit
