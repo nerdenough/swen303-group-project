@@ -12,6 +12,7 @@ var mysql = require('mysql');
 var index = require('./routes/index');
 var auth = require('./routes/auth');
 var additem = require('./routes/additem');
+var browse = require('./routes/browse');
 
 // Config
 var config = require('./config');
@@ -48,6 +49,7 @@ app.use(function(req, res, next) {
 app.use('/', index);
 app.use('/', auth);
 app.use('/', additem);
+app.use('/', browse);
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
