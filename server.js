@@ -49,14 +49,9 @@ app.use(function(req, res, next) {
 // Define routes
 app.use('/', index);
 app.use('/', auth);
-<<<<<<< HEAD
-app.use('/', additem);
 app.use('/', browse);
 app.use('/', results);
-=======
 app.use('/', listItem);
-
->>>>>>> master
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
