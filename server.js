@@ -13,6 +13,7 @@ var index = require('./routes/index');
 var auth = require('./routes/auth');
 var additem = require('./routes/additem');
 var browse = require('./routes/browse');
+var results = require('./routes/results');
 
 // Config
 var config = require('./config');
@@ -50,6 +51,7 @@ app.use('/', index);
 app.use('/', auth);
 app.use('/', additem);
 app.use('/', browse);
+app.use('/', results);
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

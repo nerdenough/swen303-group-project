@@ -1,0 +1,13 @@
+extends ./shared/layout.pug
+
+block content
+  .container
+    each result in results
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"> !{result.name} </h3>
+        </div>
+        <div class="panel-body">
+          p !{result.description}
+        </div>
+      </div>
