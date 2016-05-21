@@ -30,6 +30,18 @@
       background: $highlight-color;
     }
   }
+
+  ul.dropdown-menu {
+    background: $theme-color;
+    border: none;
+    border-top: 1px solid $highlight-color;
+    border-radius: 0;
+
+    a {
+      height: 50px;
+      line-height: 50px;
+    }
+  }
 }
 
 .auth-form {
