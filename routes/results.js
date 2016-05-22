@@ -6,18 +6,31 @@ router.get('/results', function(req, res) {
 
   var category = req.query.category;
   var sort = req.query.sort;
-  console.log('SORT: '+sort);
-  var sql = 'SELECT * FROM software WHERE category=?';
+  var search = req.query.search;
+
+
+  var sql = 'SELECT * FROM software WHERE ';
+  var query = '';
+
+  if(category){
+    query = "category='"+category+"'";
+  } else if(search){
+    query = "name LIKE '%"+search+"%'";
+  }
+
 
   if(sort==='lowtohigh'){
-    sql += ' ORDER BY price ASC'
+    query += ' ORDER BY price ASC'
   }
   else if(sort==='hightolow'){
-    sql += ' ORDER BY price DESC'
+    query += ' ORDER BY price DESC'
   }
 
+
+    sql+= query;
+
   console.log("SQL: "+sql);
-  req.db.query(sql, category, function(err, rows) {
+  req.db.query(sql, function(err, rows) {
     if (err) {
       return res.sendStatus(500);
     } else {
@@ -25,6 +38,7 @@ router.get('/results', function(req, res) {
       res.render('results', {
         title: 'SWEN303 Group Project',
         category: category,
+        search: search,
         results: rows
       });
     }
