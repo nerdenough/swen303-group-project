@@ -39,5 +39,10 @@ jspm_packages
 # Vagrant
 .vagrant/
 
+<<<<<<< HEAD
 # vim
 *.swp
+=======
+# Executable
+bin
+>>>>>>> df465d7b7206dcfed850e010b7f1d7e50385b751

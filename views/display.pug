@@ -1,0 +1,16 @@
+extends ./shared/layout.pug
+
+block content
+  .container
+    <div class="panel panel-info">
+      <div class="panel-heading"><h1>!{item[0].name}</h1></div>
+      <div class="panel-body">
+        <h3>Description:</h3>
+        |!{item[0].description}
+        br
+        br
+        <h4>Price: $!{item[0].price}</h4>
+        br
+        <button type="button" class="btn btn-default">Add to Cart</button>
+      </div>
+    </div>

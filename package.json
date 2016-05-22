@@ -4,7 +4,7 @@
   "description": "SWEN303 Group Project Website",
   "license": "MIT",
   "scripts": {
-    "start": "node server.js",
+    "start": "./bin/www",
     "test": "gulp test"
   },
   "dependencies": {
