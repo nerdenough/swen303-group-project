@@ -1,13 +1,29 @@
 extends ./shared/layout.pug
 
 block content
+
   .container
+    <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      Sort Sort by
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li><a href="#">Price: Lowest to Highest</a></li>
+      <li><a href="#">Price: Highest to Lowest</a></li>
+    </ul>
+    </div>
+
+    br
     each result in results
-      <div class="panel panel-default">
+      <div class="panel panel-info">
         <div class="panel-heading">
-          <h3 class="panel-title"> !{result.name} </h3>
+          <a href="/display?name=!{result.name}"><h3 class="panel-title"> !{result.name} </h3></a>
         </div>
         <div class="panel-body">
           p !{result.description}
         </div>
+        <ul class="list-group">
+          <li class="list-group-item"> Price: $!{result.price}</li>
+        </ul>
       </div>
