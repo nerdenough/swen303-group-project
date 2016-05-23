@@ -5,8 +5,12 @@ var router = express.Router();
 router.get('/display', function(req, res) {
 
   var name = req.query.name;
-  var sql = 'SELECT * FROM software WHERE name=?';
+  var category = req.query.category;
 
+  var img = getImage(category);
+
+  var sql = 'SELECT * FROM software WHERE name=?';
+  console.log(img);
   req.db.query(sql, name, function(err, rows) {
     if (err) {
       return res.sendStatus(500);
@@ -19,5 +23,22 @@ router.get('/display', function(req, res) {
   });
 
 });
+
+function getImage(cat){
+  switch (cat) {
+    case 'Business':
+      return 'business img';
+    case 'Development':
+      return 'Development img';
+    case 'Design':
+      return 'Design img';
+    case 'Education':
+      return 'Education img';
+    case 'Multimedia':
+      return 'Multimedia img';
+    case 'Utilities':
+      return 'Utilities img';
+  }
+}
 
 module.exports = router;
