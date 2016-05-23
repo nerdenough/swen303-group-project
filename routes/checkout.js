@@ -113,13 +113,6 @@ router.post('/checkout', function(req, res) {
 
   });
 
-  return res.render('checkout/result', {
-    title: 'Checkout',
-    app: req.config.app.title,
-    user: req.session.user,
-    message: 'Sorry, please try again',
-  });
-
 });
 
 module.exports = router;
