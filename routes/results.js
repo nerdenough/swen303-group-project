@@ -39,7 +39,7 @@ router.get('/results', function(req, res) {
     } else {
 
       res.render('results', {
-        title: config.app.title,
+        title: 'Search Results',
         app: config.app.title,
         category: category,
         search: search,

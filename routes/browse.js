@@ -8,7 +8,7 @@ var catergory;
 
 router.get('/browse', function(req, res) {
   res.render('browse', {
-    title: config.app.title,
+    title: 'Browse',
     app: config.app.title
   });
 });

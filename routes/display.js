@@ -10,13 +10,13 @@ router.get('/display', function(req, res) {
 
   var img = getImage(category);
   var sql = 'SELECT * FROM software WHERE name=?';
-  
+
   req.db.query(sql, name, function(err, rows) {
     if (err) {
       return res.sendStatus(500);
     } else {
       res.render('display', {
-        title: config.app.title,
+        title: 'Display',
         app: config.app.title,
         item: rows,
         image: img
