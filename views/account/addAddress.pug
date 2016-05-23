@@ -2,7 +2,7 @@ extends ../shared/layout.pug
 
 block content
   .container
-    form.account-form(action='/account/addAddress', method='post')
+    form.auth-form(action='/account/addAddress', method='post')
       h1 Add New Address
       input(type='checkbox', name='def')
       label Set as Default

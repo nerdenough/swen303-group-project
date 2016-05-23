@@ -34,16 +34,24 @@ CREATE TABLE software (
 
 # Orders
 CREATE TABLE orders (
-  id INT(11) NOT NULL AUTO_INCREMENT,
-  user_id INT(11) NOT NULL,
-  software_id INT(11) NOT NULL,
-  order_date INT(13) NOT NULL,
-  license_key VARCHAR(16) NOT NULL,
+  id int(11) NOT NULL AUTO_INCREMENT,
+  user_id int(11) NOT NULL,
+  order_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  address_id int(11) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+# Order Softwares
+CREATE TABLE order_software (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  order_id int(11) NOT NULL,
+  software_id int(11) NOT NULL,
+  license_key varchar(255) NOT NULL,
   PRIMARY KEY (id)
 );
 
 # Addresses
-CREATE TABLE `addresses` (
+CREATE TABLE addresses (
   id int(11) NOT NULL AUTO_INCREMENT,
   user_id int(11) NOT NULL,
   def tinyint(1) NOT NULL,
@@ -56,7 +64,7 @@ CREATE TABLE `addresses` (
 );
 
 # Carts
-CREATE TABLE `carts` (
+CREATE TABLE carts (
   id int(11) NOT NULL AUTO_INCREMENT,
   software_id int(11) NOT NULL,
   user_id int(11) NOT NULL,

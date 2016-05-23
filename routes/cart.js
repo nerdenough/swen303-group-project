@@ -22,6 +22,7 @@ router.get('/cart', function(req, res) {
     res.render('cart/view', {
       title: 'SWEN303 Project',
       software: result,
+      user: req.session.user,
     });
   });
 
