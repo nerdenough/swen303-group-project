@@ -18,6 +18,13 @@ router.post('/listItem', function(req, res) {
   var price = req.body.price;
   var category = req.body.category;
 
+  if(!name.length || !description.length || !price.length){
+    res.render('listing/listItem', {
+      title: 'SWEN 303 Project',
+      error: error
+      });
+  }
+
   var post = {
     name: name,
     description: description,
