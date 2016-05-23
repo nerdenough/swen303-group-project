@@ -17,6 +17,8 @@ router.get('/results', function(req, res) {
     query = "category='"+category+"'";
   } else if(search){
     query = "name LIKE '%"+search+"%'";
+  } else {
+    query = "name LIKE '% %'";
   }
 
 
