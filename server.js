@@ -43,6 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Global route
 app.use(function(req, res, next) {
+  req.config = config;
   req.db = db;
   next();
 });

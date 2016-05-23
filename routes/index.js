@@ -6,7 +6,8 @@ var router = express.Router();
 router.get('/', function(req, res) {
   console.log(req.session.user);
   res.render('index', {
-    title: 'SWEN303 Project',
+    title: 'Home',
+    app: req.config.app.title,
     user: req.session.user
   });
 });

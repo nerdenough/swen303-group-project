@@ -9,7 +9,8 @@ router.get('/login', function(req, res) {
   }
 
   res.render('auth/login', {
-    title: 'SWEN303 Project'
+    app: req.config.app.title,
+    title: 'Login'
   });
 });
 
@@ -20,7 +21,8 @@ router.get('/register', function(req, res) {
   }
 
   return res.render('auth/register', {
-    title: 'SWEN303 Project'
+    app: req.config.app.title,
+    title: 'Register'
   });
 });
 
@@ -42,7 +44,8 @@ router.post('/login', function(req, res) {
 
   if (!email.length || !password.length) {
     return res.render('auth/login', {
-      title: 'SWEN303 Project',
+      app: req.config.app.title,
+      title: 'Login',
       error: 'No email or password specified'
     });
   }
@@ -53,7 +56,8 @@ router.post('/login', function(req, res) {
       return res.sendStatus(500);
     } else if (!rows.length || rows[0].password !== password) {
       return res.render('auth/login', {
-        title: 'SWEN303 Project',
+        app: req.config.app.title,
+        title: 'Login',
         error: 'Invalid email or password'
       });
     }
@@ -78,7 +82,8 @@ router.post('/register', function(req, res) {
 
   if (!email.length || !password.length) {
     return res.render('auth/register', {
-      title: 'SWEN303 Project',
+      app: req.config.app.title,
+      title: 'Register',
       error: 'No email or password specified'
     });
   }
@@ -89,7 +94,8 @@ router.post('/register', function(req, res) {
       return res.sendStatus(500);
     } else if (rows.length) {
       return res.render('auth/register', {
-        title: 'SWEN303 Project',
+        app: req.config.app.title,
+        title: 'Register',
         error: 'An account already exists with this email address'
       });
     }
