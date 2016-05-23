@@ -35,7 +35,8 @@ router.get('/checkout', function(req, res) {
         }
 
         res.render('checkout/checkout', {
-          title: 'SWEN303 Project',
+          title: 'Checkout',
+          app: req.config.app.title,
           user: req.session.user,
           addresslist: addresses,
           defaultAddress: defaultAddress[0],
@@ -98,7 +99,8 @@ router.post('/checkout', function(req, res) {
           }
 
           return res.render('checkout/result', {
-            title: 'SWEN303 Project',
+            title: 'Checkout',
+            app: req.config.app.title,
             user: req.session.user,
             message: 'Order placed successfully',
           });
@@ -112,7 +114,8 @@ router.post('/checkout', function(req, res) {
   });
 
   return res.render('checkout/result', {
-    title: 'SWEN303 Project',
+    title: 'Checkout',
+    app: req.config.app.title,
     user: req.session.user,
     message: 'Sorry, please try again',
   });
