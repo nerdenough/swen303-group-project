@@ -28,7 +28,8 @@ router.get('/account', function(req, res) {
       }
 
       res.render('account/index', {
-        title: 'SWEN303 Project',
+        title: 'My Account',
+        app: req.config.app.title,
         user: userRows[0],
         addresses: addressRows,
       });
@@ -43,7 +44,8 @@ router.get('/account', function(req, res) {
 router.get('/account/updatePassword', function(req, res) {
   checkLogin(req, res);
   res.render('account/updatePassword', {
-    title: 'SWEN303 Project',
+    title: 'Update Password',
+    app: req.config.app.title,
   });
 });
 
@@ -63,7 +65,8 @@ router.post('/account/updatePassword', function(req, res) {
 
     if(!rows.length) {
       return res.render('account/updatePassword', {
-        title: 'SWEN303 Project',
+        title: 'Update Password',
+        app: req.config.app.title,
         error: 'Password does not match, please re-enter details',
       });
     }
@@ -136,7 +139,8 @@ router.get('/account/setDefaultAddress/:id', function(req, res) {
 router.get('/account/addAddress', function(req, res) {
   checkLogin(req, res);
   res.render('account/addAddress', {
-    title: 'SWEN303 Project',
+    title: 'Add Address',
+    app: req.config.app.title,
   });
 });
 

@@ -35,10 +35,76 @@ router.get('/checkout', function(req, res) {
         }
 
         res.render('checkout/checkout', {
-          title: 'SWEN303 Project',
+          title: 'Checkout',
+          app: req.config.app.title,
+          user: req.session.user,
           addresslist: addresses,
           defaultAddress: defaultAddress[0],
           total: softwarePrice[0].sum,
+        });
+
+      });
+
+    });
+
+  });
+
+});
+
+// Post: /checkout
+router.post('/checkout', function(req, res) {
+  checkLogin(req, res);
+
+  var data = req.body;
+  var orders = {
+    user_id: req.session.user.id,
+    address_id: req.body.shippingAddress,
+  }
+
+  var orderSql = "INSERT INTO orders SET ?";
+  req.db.query(orderSql, orders, function(err, orders) {
+    if (err) {
+      return res.sendStatus(500);
+    }
+
+    var order_id = orders.insertId;
+
+    var softwareSql = "SELECT software_id FROM carts WHERE user_id = ?";
+    var softwareParams = req.session.user.id;
+    req.db.query(softwareSql, softwareParams, function(err, softwares) {
+      if (err) {
+        return res.sendStatus(500);
+      }
+      var orderSoftwareSql = "INSERT INTO order_software (order_id, software_id) VALUES ?";
+      var orderSoftwareParams = [];
+
+      for (var i = softwares.length - 1; i >= 0; i--) {
+
+        orderSoftwareParams.push([
+          order_id,
+          softwares[i].software_id
+        ]);
+      };
+
+      req.db.query(orderSoftwareSql, [orderSoftwareParams], function(err, orderSoftware) {
+        if (err) {
+          return res.sendStatus(500);
+        }
+
+        var cartSql = "DELETE FROM carts WHERE user_id = ?";
+        var cartParams = req.session.user.id;
+        req.db.query(cartSql, cartParams, function(err, result) {
+          if (err) {
+            return res.sendStatus(500);
+          }
+
+          return res.render('checkout/result', {
+            title: 'Checkout',
+            app: req.config.app.title,
+            user: req.session.user,
+            message: 'Order placed successfully',
+          });
+
         });
 
       });

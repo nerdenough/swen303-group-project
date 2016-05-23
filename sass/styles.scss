@@ -95,6 +95,48 @@ body {
   }
 }
 
+.checkout-form {
+  max-width: 800px;
+  text-align: center;
+  margin: 0 auto;
+
+
+  input, select {
+    width: 100%;
+    height: 60px;
+    padding: 0 15px;
+    font-family: $base-font-family;
+    font-size: 18px;
+    font-weight: $base-font-weight;
+    text-align: center;
+    margin-top: 20px;
+    border: 1px solid #dedede;
+    border-radius: 5px;
+    outline: none;
+
+    &:focus {
+      border: 1px solid $theme-color;
+    }
+  }
+
+  button {
+    width: 100%;
+    height: 60px;
+    background: $theme-color;
+    color: white;
+    font-size: 18px;
+    font-weight: $bold;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+
+  .alt-link {
+    font-size: 18px;
+    margin: 20px 0;
+  }
+}
+
 .error {
   color: $error;
   margin-top: 20px;
@@ -112,6 +154,7 @@ body {
     padding: 5px;
 
     .card {
+      position: relative;
       background: #efefef;
       width: 100%;
       height: 100%;
@@ -120,6 +163,36 @@ body {
 
       &:hover {
         border: 1px solid $theme-color;
+      }
+
+      .price {
+        color: #404040;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        font-size: 72px;
+        font-weight: $bold;
+        transform: translate(-50%, -50%);
+      }
+
+      .label {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 20px;
+        background: $theme-color;
+        overflow: hidden;
+
+        h2 {
+          font-size: 18px;
+          font-weight: $light;
+          margin: 0;
+        }
+
+        p {
+          font-size: 14px;
+          font-weight: $light;
+        }
       }
     }
   }

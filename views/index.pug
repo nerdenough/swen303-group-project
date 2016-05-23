@@ -10,21 +10,22 @@ block content
     h1= app
     h2 Featured Software
     .card-list
-      .col-md-3.col-sm-6.col-xs-6
-        .card
-      .col-md-3.col-sm-6.col-xs-6
-        .card
-      .col-md-3.col-sm-6.col-xs-6
-        .card
-      .col-md-3.col-sm-6.col-xs-6
-        .card
+      each item in featured
+        .col-md-3.col-sm-6.col-xs-6
+          a(href='/display?name=' + item.name + '&category=' + item.category)
+            .card
+              .price $#{item.price}
+              .label
+                h2= item.name
+                p= item.description
+
     h2 Latest Software
     .card-list
-      .col-md-3.col-sm-6.col-xs-6
-        .card
-      .col-md-3.col-sm-6.col-xs-6
-        .card
-      .col-md-3.col-sm-6.col-xs-6
-        .card
-      .col-md-3.col-sm-6.col-xs-6
-        .card
+      each item in latest
+        a(href='/display?name=' + item.name + '&category=' + item.category)
+          .col-md-3.col-sm-6.col-xs-6
+            .card
+              .price $#{item.price}
+              .label
+                h2= item.name
+                p= item.description
