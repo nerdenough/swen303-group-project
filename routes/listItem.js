@@ -1,10 +1,15 @@
 'use strict';
 var express = require('express');
 var router = express.Router();
+var config = require('../config');
 
 router.get('/listItem', function(req, res) {
+  if(!req.session.user){
+    res.redirect('/login');
+  }
   res.render('listing/listItem', {
-    title: 'SWEN303 Project'
+    title: config.app.title,
+    app: config.app.title
   });
 });
 
@@ -18,6 +23,7 @@ router.post('/listItem', function(req, res) {
   var price = req.body.price;
   var category = req.body.category;
 
+<<<<<<< HEAD
   if(!name.length || !description.length || !price.length){
     res.render('listing/listItem', {
       title: 'SWEN 303 Project',
@@ -25,6 +31,9 @@ router.post('/listItem', function(req, res) {
       });
   }
 
+=======
+  console.log("name: "+name+" description: "+description+" category: "+category);
+>>>>>>> master
   var post = {
     name: name,
     description: description,

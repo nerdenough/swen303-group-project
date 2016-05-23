@@ -1,0 +1,19 @@
+extends ./shared/layout.pug
+
+block content
+  - function getUrl(){ return "cart/add/" + item[0].id; };
+  .container
+    <div class="panel panel-info">
+      <div class="panel-heading"><h1>!{item[0].name}</h1></div>
+      <div class="panel-body">
+        <img src=!{image} align=right style="padding: 10px;"/>
+        <h3>Description:</h3>
+        |!{item[0].description}
+        br
+        br
+        <h4>Price: $!{item[0].price}</h4>
+        br
+        a(href=getUrl())
+          <button type="submit" class="btn btn-default">Add to Cart</button>
+      </div>
+    </div>

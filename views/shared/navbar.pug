@@ -5,18 +5,33 @@ nav#swen303-navbar.navbar.navbar-default
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(href='/')= title
+      a.navbar-brand(href='/')= app
 
     #navbar.collapse.navbar-collapse
       ul.nav.navbar-nav
         li
           a(href='/') Home
+        li
+          a(href='/browse') Browse
+        li
+          a(href='/support') Support
       ul.nav.navbar-nav.navbar-right
+        li
+          a(href='/cart') Cart
         unless user
           li
-            a(href='/register') Register
+            a(href='/register') Sign Up
           li
             a(href='/login') Login
         else
-          li
-            a(href='/logout') Logout
+          li.dropdown
+            a.dropdown-toggle(data-toggle='dropdown' href='#')= user.email
+              span.caret
+
+            ul.dropdown-menu
+              li
+                a(href='/account') My Account
+              li
+                a(href='/orders') My Orders
+              li
+                a(href='/logout') Logout

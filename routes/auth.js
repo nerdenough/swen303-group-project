@@ -9,7 +9,8 @@ router.get('/login', function(req, res) {
   }
 
   res.render('auth/login', {
-    title: 'SWEN303 Project'
+    app: req.config.app.title,
+    title: 'Login'
   });
 });
 
@@ -19,8 +20,9 @@ router.get('/register', function(req, res) {
     res.redirect('/');
   }
 
-  res.render('auth/register', {
-    title: 'SWEN303 Project'
+  return res.render('auth/register', {
+    app: req.config.app.title,
+    title: 'Register'
   });
 });
 
@@ -28,7 +30,7 @@ router.get('/register', function(req, res) {
 router.get('/logout', function(req, res) {
   req.session.destroy(function(err) {
     if (err) {
-      res.sendStatus(500);
+      return res.sendStatus(500);
     }
 
     res.redirect('/login');
@@ -41,18 +43,27 @@ router.post('/login', function(req, res) {
   var password = req.body.password;
 
   if (!email.length || !password.length) {
-    return res.sendStatus(500);
+    return res.render('auth/login', {
+      app: req.config.app.title,
+      title: 'Login',
+      error: 'No email or password specified'
+    });
   }
 
-  var sql = 'SELECT password FROM users WHERE email=?';
+  var sql = 'SELECT id, password FROM users WHERE email=?';
   req.db.query(sql, email, function(err, rows) {
     if (err) {
       return res.sendStatus(500);
     } else if (!rows.length || rows[0].password !== password) {
-      return res.json({error: 'Invalid Credentials'});
+      return res.render('auth/login', {
+        app: req.config.app.title,
+        title: 'Login',
+        error: 'Invalid email or password'
+      });
     }
 
     req.session.user = {
+      id: rows[0].id,
       email: email
     };
 
@@ -66,15 +77,29 @@ router.post('/register', function(req, res) {
   var password = req.body.password;
   var post = {
     email: email,
-    password: password
+    password: password,
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
   };
 
-  var sql = 'SELECT email FROM users WHERE email=?';
+  if (!email.length || !password.length) {
+    return res.render('auth/register', {
+      app: req.config.app.title,
+      title: 'Register',
+      error: 'No email or password specified'
+    });
+  }
+
+  var sql = 'SELECT id, email FROM users WHERE email=?';
   req.db.query(sql, email, function(err, rows) {
     if (err) {
       return res.sendStatus(500);
     } else if (rows.length) {
-      return res.json({error: 'User Exists'});
+      return res.render('auth/register', {
+        app: req.config.app.title,
+        title: 'Register',
+        error: 'An account already exists with this email address'
+      });
     }
 
     sql = 'INSERT INTO users SET ?';
@@ -83,11 +108,7 @@ router.post('/register', function(req, res) {
         return res.sendStatus(500);
       }
 
-      req.session.user = {
-        email: email
-      };
-
-      res.redirect('/');
+      res.redirect('/login');
     });
   });
 });

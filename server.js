@@ -11,7 +11,13 @@ var mysql = require('mysql');
 // Custom routes
 var index = require('./routes/index');
 var auth = require('./routes/auth');
+var account = require('./routes/account');
+var cart = require('./routes/cart');
+var checkout = require('./routes/checkout');
+var browse = require('./routes/browse');
+var results = require('./routes/results');
 var listItem = require('./routes/listItem');
+var display = require('./routes/display');
 
 // Config
 var config = require('./config');
@@ -40,6 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Global route
 app.use(function(req, res, next) {
+  req.config = config;
   req.db = db;
   next();
 });
@@ -47,7 +54,13 @@ app.use(function(req, res, next) {
 // Define routes
 app.use('/', index);
 app.use('/', auth);
+app.use('/', account);
+app.use('/', cart);
+app.use('/', checkout);
+app.use('/', browse);
+app.use('/', results);
 app.use('/', listItem);
+app.use('/', display);
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
