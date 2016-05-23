@@ -1,0 +1,14 @@
+extends ../shared/layout.pug
+
+block content
+  .container
+    h1 Order History
+    table(class='table table-condensed')
+      thead
+        th Order #
+        th Date
+      tbody
+        for item in orders
+          tr
+            td= item.id
+            td= item.order_date
