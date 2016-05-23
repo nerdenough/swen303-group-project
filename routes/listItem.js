@@ -25,7 +25,7 @@ router.post('/listItem', function(req, res) {
 
   if(!name.length || !description.length || !price.length){
     res.render('listing/listItem', {
-      title: config.app.title,
+      title: 'List Item',
       app: config.app.title,
       error: 'Please fill out all fields.'
       });
@@ -53,7 +53,7 @@ router.post('/listItem', function(req, res) {
       	console.log("BIG ERRORS BOIS");
       }
         res.render('listing/listConfirm', {
-          title: config.app.title,
+          title: 'List Item',
           app: config.app.title,
         	message: message
         	});

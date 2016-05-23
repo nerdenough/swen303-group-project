@@ -20,8 +20,10 @@ router.get('/cart', function(req, res) {
       return res.sendStatus(500);
     }
     res.render('cart/view', {
-      title: 'SWEN303 Project',
+      title: 'My Cart',
+      app: req.config.app.title,
       software: result,
+      user: req.session.user,
     });
   });
 
