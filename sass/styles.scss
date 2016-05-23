@@ -1,10 +1,20 @@
 @import 'partials/base';
 
+body {
+  margin-top: 100px;
+}
+
 #swen303-navbar {
   height: 100px;
+  width: 100%;
   background: $theme-color;
   border: none;
   border-radius: 0;
+  margin-bottom: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 
   .navbar-brand {
     height: 100%;
@@ -122,5 +132,50 @@
 
   .navbar-nav {
     margin: 0 -15px;
+  }
+}
+
+#featured-carousel {
+  height: 400px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    transform: translateY(-30%);
+  }
+}
+
+.card-list {
+  width: 100%;
+  height: 250px;
+
+  .col-md-3 {
+    height: 100%;
+    padding: 5px;
+
+    .card {
+      background: #efefef;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.footer {
+  background: darken($theme-color, 40%);
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 50px;
+
+  h4 {
+    color: white;
+    text-transform: uppercase;
+  }
+
+  nav {
+    a {
+      color: white;
+      display: block;
+    }
   }
 }
