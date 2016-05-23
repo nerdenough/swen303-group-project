@@ -1,6 +1,7 @@
 'use strict';
 var express = require('express');
 var router = express.Router();
+var config = require('../config');
 
 router.get('/results', function(req, res) {
 
@@ -36,7 +37,8 @@ router.get('/results', function(req, res) {
     } else {
 
       res.render('results', {
-        title: 'SWEN303 Group Project',
+        title: config.app.title,
+        app: config.app.title,
         category: category,
         search: search,
         results: rows

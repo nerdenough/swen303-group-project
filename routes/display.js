@@ -1,6 +1,7 @@
 'use strict';
 var express = require('express');
 var router = express.Router();
+var config = require('../config');
 
 router.get('/display', function(req, res) {
 
@@ -16,7 +17,8 @@ router.get('/display', function(req, res) {
       return res.sendStatus(500);
     } else {
       res.render('display', {
-        title: 'SWEN303 Group Project',
+        title: config.app.title,
+        app: config.app.title,
         item: rows,
         image: img
       });

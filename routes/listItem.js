@@ -1,10 +1,15 @@
 'use strict';
 var express = require('express');
 var router = express.Router();
+var config = require('../config');
 
 router.get('/listItem', function(req, res) {
+  if(!req.session.user){
+    res.redirect('/login');
+  }
   res.render('listing/listItem', {
-    title: 'SWEN303 Project'
+    title: config.app.title,
+    app: config.app.title
   });
 });
 
