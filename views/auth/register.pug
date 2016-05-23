@@ -4,6 +4,8 @@ block content
   .container
     form.auth-form(action='/register', method='post')
       h1 Sign Up
+      input(type='text', name='firstname', placeholder='First Name')
+      input(type='text', name='lastname', placeholder='Last Name')
       input(type='email', name='email', placeholder='Email')
       input(type='password', name='password', placeholder='Password')
       if error
