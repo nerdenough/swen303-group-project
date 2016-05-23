@@ -23,7 +23,6 @@ router.post('/listItem', function(req, res) {
   var price = req.body.price;
   var category = req.body.category;
 
-<<<<<<< HEAD
   if(!name.length || !description.length || !price.length){
     res.render('listing/listItem', {
       title: 'SWEN 303 Project',
@@ -31,9 +30,8 @@ router.post('/listItem', function(req, res) {
       });
   }
 
-=======
   console.log("name: "+name+" description: "+description+" category: "+category);
->>>>>>> master
+
   var post = {
     name: name,
     description: description,
