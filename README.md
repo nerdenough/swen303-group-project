@@ -1,4 +1,5 @@
 # SWEN303 Group Project
+
 ## Getting Started
 - `cd` into your swen303-group-project directory
 - Run 'vagrant up' to start the VM
