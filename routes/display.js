@@ -17,7 +17,8 @@ router.get('/display', function(req, res) {
     } else {
       res.render('display', {
         title: 'SWEN303 Group Project',
-        item: rows
+        item: rows,
+        image: img
       });
     }
   });
@@ -27,17 +28,17 @@ router.get('/display', function(req, res) {
 function getImage(cat){
   switch (cat) {
     case 'Business':
-      return 'business img';
+      return 'http://icons.iconarchive.com/icons/walrick/openphone/256/Graph-icon.png';
     case 'Development':
-      return 'Development img';
+      return 'http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Categories-applications-development-icon.png';
     case 'Design':
-      return 'Design img';
+      return 'http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Apps-basket-icon.png';
     case 'Education':
-      return 'Education img';
+      return 'http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Categories-applications-education-university-icon.png';
     case 'Multimedia':
-      return 'Multimedia img';
+      return 'http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Categories-applications-multimedia-icon.png';
     case 'Utilities':
-      return 'Utilities img';
+      return 'http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Apps-preferences-desktop-user-password-icon.png';
   }
 }
 
