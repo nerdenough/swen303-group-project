@@ -11,6 +11,8 @@ var mysql = require('mysql');
 // Custom routes
 var index = require('./routes/index');
 var auth = require('./routes/auth');
+var account = require('./routes/account');
+var cart = require('./routes/cart');
 var browse = require('./routes/browse');
 var results = require('./routes/results');
 var listItem = require('./routes/listItem');
@@ -50,6 +52,8 @@ app.use(function(req, res, next) {
 // Define routes
 app.use('/', index);
 app.use('/', auth);
+app.use('/', account);
+app.use('/', cart);
 app.use('/', browse);
 app.use('/', results);
 app.use('/', listItem);

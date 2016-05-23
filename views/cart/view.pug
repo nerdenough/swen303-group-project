@@ -1,0 +1,24 @@
+extends ../shared/layout.pug
+
+block content
+  .container
+    h1 Shopping Cart
+    table(class='table table-condensed')
+      thead
+        th
+        th Product
+        th Description
+        th Price
+        th Remove
+      tbody
+        for item in software
+          tr
+            td=item.picture
+            td=item.name
+            td=item.description
+            td=item.price
+            td
+              a(href='/cart/remove/' + item.id) Remove
+
+    form.cart-form(action='/cart/checkout')
+      button(type='submit', class='nice-button') Checkout

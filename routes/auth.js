@@ -47,7 +47,7 @@ router.post('/login', function(req, res) {
     });
   }
 
-  var sql = 'SELECT password FROM users WHERE email=?';
+  var sql = 'SELECT id, password FROM users WHERE email=?';
   req.db.query(sql, email, function(err, rows) {
     if (err) {
       return res.sendStatus(500);
@@ -73,7 +73,9 @@ router.post('/register', function(req, res) {
   var password = req.body.password;
   var post = {
     email: email,
-    password: password
+    password: password,
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
   };
 
   if (!email.length || !password.length) {

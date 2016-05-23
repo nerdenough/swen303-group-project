@@ -41,3 +41,24 @@ CREATE TABLE orders (
   license_key VARCHAR(16) NOT NULL,
   PRIMARY KEY (id)
 );
+
+# Addresses
+CREATE TABLE `addresses` (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  user_id int(11) NOT NULL,
+  def tinyint(1) NOT NULL,
+  attn varchar(255) NOT NULL,
+  addr1 varchar(255) NOT NULL,
+  addr2 varchar(255) NOT NULL,
+  city varchar(255) NOT NULL,
+  zip varchar(255) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+# Carts
+CREATE TABLE `carts` (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  software_id int(11) NOT NULL,
+  user_id int(11) NOT NULL,
+  PRIMARY KEY (id)
+)
