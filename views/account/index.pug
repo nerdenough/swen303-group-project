@@ -1,0 +1,43 @@
+extends ../shared/layout.pug
+
+block content
+  .container
+    h1 My Account
+
+    h3 User Details
+    table(class='table table-condensed')
+      tbody
+        tr
+          td Name
+          td=user.firstname + ' ' + user.lastname
+        tr
+          td Email
+          td=user.email
+        tr
+          td Password
+          td
+            a(href='/account/updatePassword') Change Password
+
+    h3 Addresses
+    a(href='/account/addAddress') Add Address
+    table(class='table table-bordered table-condensed')
+      thead
+        th Care Of
+        th Address 1
+        th Address 2
+        th City
+        th Postcode
+        th Default
+      tbody
+        for address in addresses
+          tr
+            td=address.attn
+            td=address.addr1
+            td=address.addr2
+            td=address.city
+            td=address.zip
+            if (address.def === 1)
+              td Current Default
+            else
+              td
+                a(href='/account/setDefaultAddress/' + address.id) Set as Default
