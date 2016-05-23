@@ -162,7 +162,7 @@ body {
 }
 
 .footer {
-  background: darken($theme-color, 40%);
+  background: $theme-color;
   text-align: center;
   padding: 20px 0;
   margin-top: 50px;
@@ -176,6 +176,42 @@ body {
     a {
       color: white;
       display: block;
+    }
+  }
+}
+
+#searchbar {
+  width: 100%;
+  padding: 20px 0;
+
+  form {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+
+    input {
+      flex-grow: 1;
+      height: 40px;
+      color: #404040;
+      font-size: 18px;
+      font-weight: $light;
+      border: 1px solid #efefef;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      padding: 0 10px;
+      outline: none;
+    }
+
+    button {
+      height: 40px;
+      background: $theme-color;
+      color: white;
+      font-size: 18px;
+      border: none;
+      padding: 0 15px;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      outline: none;
     }
   }
 }
