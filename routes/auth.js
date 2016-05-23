@@ -59,6 +59,7 @@ router.post('/login', function(req, res) {
     }
 
     req.session.user = {
+      id: rows[0].id,
       email: email
     };
 
@@ -82,7 +83,7 @@ router.post('/register', function(req, res) {
     });
   }
 
-  var sql = 'SELECT email FROM users WHERE email=?';
+  var sql = 'SELECT id, email FROM users WHERE email=?';
   req.db.query(sql, email, function(err, rows) {
     if (err) {
       return res.sendStatus(500);
@@ -99,11 +100,7 @@ router.post('/register', function(req, res) {
         return res.sendStatus(500);
       }
 
-      req.session.user = {
-        email: email
-      };
-
-      res.redirect('/');
+      res.redirect('/login');
     });
   });
 });
