@@ -8,9 +8,8 @@ router.get('/display', function(req, res) {
   var category = req.query.category;
 
   var img = getImage(category);
-
   var sql = 'SELECT * FROM software WHERE name=?';
-  console.log(img);
+  
   req.db.query(sql, name, function(err, rows) {
     if (err) {
       return res.sendStatus(500);
