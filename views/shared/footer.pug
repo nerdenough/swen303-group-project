@@ -1,0 +1,19 @@
+footer.footer
+  .container
+    .col-md-6.col-sm-12
+      h4 Main Pages
+      nav
+        a(href='/') Home
+        a(href='/browse') Browse
+        a(href='/support') Support
+        a(href='/cart') Your Cart
+    .col-md-6.col-sm-12
+      h4 Account
+      nav
+        unless user
+          a(href='/register') Sign Up
+          a(href='/login') Login
+        else
+          a(href='/account') My Account
+          a(href='/orders') My Orders
+          a(href='/logout') Sign Out
