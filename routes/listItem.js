@@ -25,9 +25,12 @@ router.post('/listItem', function(req, res) {
 
   if(!name.length || !description.length || !price.length){
     res.render('listing/listItem', {
-      title: 'SWEN 303 Project',
-      error: error
+      title: config.app.title,
+      app: config.app.title,
+      error: 'Please fill out all fields.'
       });
+
+    return;
   }
 
   console.log("name: "+name+" description: "+description+" category: "+category);
@@ -50,7 +53,8 @@ router.post('/listItem', function(req, res) {
       	console.log("BIG ERRORS BOIS");
       }
         res.render('listing/listConfirm', {
-        	title: 'SWEN 303 Project',
+          title: config.app.title,
+          app: config.app.title,
         	message: message
         	});
   });
