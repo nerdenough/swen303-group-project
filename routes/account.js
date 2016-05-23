@@ -46,6 +46,7 @@ router.get('/account/updatePassword', function(req, res) {
   res.render('account/updatePassword', {
     title: 'Update Password',
     app: req.config.app.title,
+    user: req.session.user,
   });
 });
 
@@ -67,6 +68,7 @@ router.post('/account/updatePassword', function(req, res) {
       return res.render('account/updatePassword', {
         title: 'Update Password',
         app: req.config.app.title,
+        user: req.session.user,
         error: 'Password does not match, please re-enter details',
       });
     }
@@ -141,6 +143,7 @@ router.get('/account/addAddress', function(req, res) {
   res.render('account/addAddress', {
     title: 'Add Address',
     app: req.config.app.title,
+    user: req.session.user,
   });
 });
 
