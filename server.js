@@ -18,6 +18,7 @@ var browse = require('./routes/browse');
 var results = require('./routes/results');
 var listItem = require('./routes/listItem');
 var display = require('./routes/display');
+var orders = require('./routes/orders');
 
 // Config
 var config = require('./config');
@@ -61,6 +62,7 @@ app.use('/', browse);
 app.use('/', results);
 app.use('/', listItem);
 app.use('/', display);
+app.use('/', orders);
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
