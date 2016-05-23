@@ -2,6 +2,7 @@
 var express = require('express');
 var router = express.Router();
 
+// Helper function: Check user logged in
 function checkLogin(req, res) {
   if(req.session.user === undefined) {
     return res.redirect('/login');
@@ -94,13 +95,11 @@ router.get('/account/removeAddress/:id', function(req, res) {
     req.session.user.id,
   ];
   req.db.query(sql, params, function(err, result) {
-    if (!err) {
-      res.redirect('/account');
-    }
-    else {
-      console.log(err);
+    if (err) {
       return res.sendStatus(500);
     }
+
+    res.redirect('/account');
   });
 
 });
@@ -113,7 +112,6 @@ router.get('/account/setDefaultAddress/:id', function(req, res) {
   var params = req.session.user.id;
   req.db.query(sql, params, function(err, result) {
     if (err) {
-      console.log(err);
       return res.sendStatus(500);
     }
 
@@ -124,7 +122,6 @@ router.get('/account/setDefaultAddress/:id', function(req, res) {
     ];
     req.db.query(updateSql, updateParams, function(err, updateResult) {
       if (err) {
-        console.log(err);
         return res.sendStatus(500);
       }
 
