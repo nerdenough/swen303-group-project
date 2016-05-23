@@ -9,6 +9,7 @@ var catergory;
 router.get('/browse', function(req, res) {
   res.render('browse', {
     title: 'Browse',
+    user: req.session.user,
     app: config.app.title
   });
 });

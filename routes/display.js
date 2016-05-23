@@ -18,6 +18,7 @@ router.get('/display', function(req, res) {
       res.render('display', {
         title: 'Display',
         app: config.app.title,
+        user: req.session.user,
         item: rows,
         image: img
       });

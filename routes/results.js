@@ -41,6 +41,7 @@ router.get('/results', function(req, res) {
       res.render('results', {
         title: 'Search Results',
         app: config.app.title,
+        user: req.session.user,
         category: category,
         search: search,
         results: rows

@@ -9,6 +9,7 @@ router.get('/listItem', function(req, res) {
   }
   res.render('listing/listItem', {
     title: config.app.title,
+    user: req.session.user,
     app: config.app.title
   });
 });
@@ -27,6 +28,7 @@ router.post('/listItem', function(req, res) {
     res.render('listing/listItem', {
       title: 'List Item',
       app: config.app.title,
+      user: req.session.user,
       error: 'Please fill out all fields.'
       });
 
@@ -55,6 +57,7 @@ router.post('/listItem', function(req, res) {
         res.render('listing/listConfirm', {
           title: 'List Item',
           app: config.app.title,
+          user: req.session.user,
         	message: message
         	});
   });
