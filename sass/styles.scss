@@ -154,6 +154,7 @@ body {
     padding: 5px;
 
     .card {
+      position: relative;
       background: #efefef;
       width: 100%;
       height: 100%;
@@ -162,6 +163,36 @@ body {
 
       &:hover {
         border: 1px solid $theme-color;
+      }
+
+      .price {
+        color: #404040;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        font-size: 72px;
+        font-weight: $bold;
+        transform: translate(-50%, -50%);
+      }
+
+      .label {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 20px;
+        background: $theme-color;
+        overflow: hidden;
+
+        h2 {
+          font-size: 18px;
+          font-weight: $light;
+          margin: 0;
+        }
+
+        p {
+          font-size: 14px;
+          font-weight: $light;
+        }
       }
     }
   }

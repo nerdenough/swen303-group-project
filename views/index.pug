@@ -12,18 +12,20 @@ block content
     .card-list
       each item in featured
         .col-md-3.col-sm-6.col-xs-6
-          .card
-            .price $#{item.price}
-            .label
-              h2= item.name
-              p= item.description
+          a(href='/display?name=' + item.name + '&category=' + item.category)
+            .card
+              .price $#{item.price}
+              .label
+                h2= item.name
+                p= item.description
 
     h2 Latest Software
     .card-list
       each item in latest
-        .col-md-3.col-sm-6.col-xs-6
-          .card
-            .price $#{item.price}
-            .label
-              h2= item.name
-              p= item.description
+        a(href='/display?name=' + item.name + '&category=' + item.category)
+          .col-md-3.col-sm-6.col-xs-6
+            .card
+              .price $#{item.price}
+              .label
+                h2= item.name
+                p= item.description
